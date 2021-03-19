@@ -1,0 +1,49 @@
+package Unisociesc;
+
+import java.util.Scanner;
+
+public class MediaDeQuatroNotas {
+	
+	public static void main(String[] args) {
+		
+		int nota1; 
+		int nota2;
+		int nota3;
+		int nota4; 
+		double media;
+		char sexo;		
+		
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("Digite as 4 notas de 0 a 100");
+		nota1 = entrada.nextInt();		
+		nota2 = entrada.nextInt();		
+		nota3 = entrada.nextInt();		
+		nota4 = entrada.nextInt();
+		System.out.println("Qual seu sexo? ");
+		sexo = entrada.next().charAt(0);
+			
+		media = (nota1 + nota2 + nota3 + nota4) / 4;
+					
+		
+		if(sexo == 'f' && media >= 70) {
+			System.out.println("Sua média é " + media + " e você está Aprovadaaa!!!");
+		}
+		
+		if(sexo == 'm' && media >= 70) {
+			System.out.println("Sua média é " + media + " e você está aprovadooo!!!");
+		}
+		
+			if(sexo == 'f' && media < 70) {
+				System.out.println("Sua média é " + media + " e você está Reprovadaaaa!!!");
+			}
+			
+				if(sexo == 'm' && media < 70) {
+					System.out.println("Sua média é " + media + " e você está Reprovadooo!!!");
+				}
+							
+	entrada.close();			
+				}
+								
+	}
+
+
