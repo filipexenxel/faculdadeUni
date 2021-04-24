@@ -1,0 +1,30 @@
+package Unisociesc;
+
+import java.util.Scanner;
+
+public class Exerc02douglas {
+	
+	public static void main(String[] args) {
+		
+		int v1, v2, v3;
+		
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("Diga o primeiro número: ");
+		v1 = entrada.nextInt();
+		System.out.println("Diga o segundo número: ");
+		v2 = entrada.nextInt();
+		System.out.println("Diga o terceiro número: ");
+		v3 = entrada.nextInt();
+		
+		System.out.println("A soma do primeiro número com o segundo é: " + ( v1 + v2 + "."));
+		System.out.println("A subtração do segundo número com o primeiro é: " + (+ v2 - v1 + "."));
+		System.out.println("A multiplicação do terceiro número com o primeiro é: "+ ( v3 * v1 + "."));
+		System.out.println("A soma do terceiro número com o segundo é: " + (v3 + v2 + "."));
+		System.out.println("A subtração do terceiro número com o segundo é: " + (v3 - v2 + "."));
+		System.out.println("A soma dos três números é: " +  (v1 + v2 + v3 + "."));
+		
+		entrada.close();
+		
+	}
+
+}
