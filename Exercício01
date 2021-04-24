@@ -1,0 +1,36 @@
+package Unisociesc;
+
+import java.util.Scanner;
+
+public class Exerc01douglas {
+	
+	public static void main(String[] args) {
+				  		
+		int soma;		 
+		int multiplicação;        	
+		int num1;
+		int num2;
+		
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("Informe o Primeiro número: ");
+		num1 = entrada.nextInt();
+		System.out.println("Informe o Segundo número: ");
+		num2 = entrada.nextInt();
+		
+		soma = num1 + num2;
+		System.out.println("A soma dos números é " + soma);
+		
+		multiplicação = num1 * num2;
+		System.out.println("A multiplicação dos números é " + multiplicação);
+		
+		// OUUUUU 
+		
+		System.out.println("A subtração dos números é " +(num1 - num2));
+		
+		
+		System.out.println("A divisão dos números é " + (num1 / num2));
+		
+		entrada.close();
+	}
+
+}
