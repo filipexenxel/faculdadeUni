@@ -1,0 +1,28 @@
+package Unisociesc;
+
+import java.time.LocalDateTime;
+
+import java.util.Scanner;
+
+public class Exerc03douglas {
+	
+	public static void main(String[] args) {
+		
+		int anoNascimento;
+		int dataAtual;
+		
+		
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("Seu ano de nascimento: ");
+		anoNascimento = entrada.nextInt();
+		
+		LocalDateTime data1 = LocalDateTime.now();
+		dataAtual = data1.getYear();
+		
+		System.out.println("Você fez ou fará " + (dataAtual - anoNascimento + " neste ano!!!"));
+		
+		entrada.close();
+		
+	}
+
+}
