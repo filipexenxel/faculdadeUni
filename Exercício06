@@ -1,0 +1,48 @@
+package Unisociesc;
+
+import java.util.Scanner;
+
+public class Exerc06douglas {
+	
+	public static void main(String[] args) {
+			
+		String nome;
+		double horas_trabalhadas;
+		double num_dependentes;
+	    final double Pag_fixo_hora = 32.00;
+		final double Pag_fixo_dependente = 40.00;		
+		double salBruto;
+		double descontoINSS;
+		double descontoIR;
+		double salLiquido;
+			
+		Scanner teclado = new Scanner(System.in);
+		
+		System.out.println("Seu nome: ");
+		nome = teclado.nextLine();
+			
+		System.out.println("Horas trabalhadas: ");
+		horas_trabalhadas = teclado.nextDouble();
+		
+		System.out.println("Dependentes: ");
+		num_dependentes = teclado.nextDouble();
+		
+		System.out.println(nome + ", segue abaixo seu salário bruto, seus descontos "
+				+ "e seu salário líquido: ");
+				
+		salBruto = (horas_trabalhadas * Pag_fixo_hora + num_dependentes * Pag_fixo_dependente);
+		System.out.println("O salário bruto é: " + salBruto + ".");
+		
+		descontoINSS = salBruto * 8.5 / 100;
+		System.out.println("O valor de desconto do INSS é: " + descontoINSS + ".");
+		
+		descontoIR = salBruto * 5 / 100;
+		System.out.println("O valor de desconto do IR é: " + descontoIR + ".");
+		
+		salLiquido = (salBruto - descontoINSS - descontoIR); 
+		System.out.println("O valor líquido é: " + salLiquido + ".");
+		
+		teclado.close();
+		
+	}
+}
