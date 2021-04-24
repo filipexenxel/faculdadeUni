@@ -1,0 +1,21 @@
+package Unisociesc;
+
+import java.util.Scanner;
+
+public class Exerc04douglas {
+	
+	public static void main(String[] args) {
+		
+		double num1;
+		double novoValor;
+		
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("Diga o número desejado: ");
+		num1 = entrada.nextDouble();
+			
+		novoValor = num1 + ((num1 * (15.8/100)));
+		System.out.println("O número " + num1 + " acrescido de 15.8% é: " + novoValor + ".");
+		
+		entrada.close();				
+	}
+}
