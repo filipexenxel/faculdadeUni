@@ -1,0 +1,184 @@
+package pacote1;
+
+import java.time.LocalDateTime;
+import java.util.Scanner;
+
+public class Empregados {
+	
+	public static void main(String[] args) {
+		
+String nome; double valorBeneficio = 0; String categoria; String aposentado;
+double funcionarios; int mesesDesempregado; String estado; double novoValor = 0;
+String novoBeneficiario; int empregadores; String novoBeneficiario2; int mesesBeneficio = 0;
+
+double valorTotalConcedido = 0;
+String etapas = "";
+int anoNasc; int anoAtu;
+int contador1 = 0;
+int contador2 = 0;
+String nomeMaior = "";
+String nomeSegundoMaior = "";
+int mesMaior = 0;
+int mesSegundoMaior = 0;
+double beneMaior = 0;
+double segundoBeneMaior = 0;
+
+  do {
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("Diga seu nome: ");
+		nome = entrada.nextLine();
+		System.out.println("Digite o ano de nascimento: ");
+		anoNasc = entrada.nextInt();
+		LocalDateTime data1 = LocalDateTime.now();
+		anoAtu = data1.getYear();
+		System.out.println("A idade aproximada é: " + (anoAtu - anoNasc) + " anos");
+		System.out.println("----Você é EMPREGADO, EMPREGADOR OU DESEMPREGADO?----");			
+		categoria = entrada.next();		
+		
+		// letras utilizadas: F, J, P, E, H, S
+		
+		switch (categoria.toUpperCase()) {
+		case "EMPREGADO": 
+			System.out.println("Qual é o valor do benefício?"
+					+ " (Empregados receberão entre R$1000 e R$ 1800) ");
+			valorBeneficio = entrada.nextDouble();
+			while(valorBeneficio < 1000 || valorBeneficio > 1800) {
+				System.out.println("Diga um valor válido ");
+				valorBeneficio = entrada.nextDouble();
+			}
+			System.out.println("Quantos meses de benefício? (máximo 12 meses e mínimo 2 meses) ");
+			mesesBeneficio = entrada.nextInt();
+			while(mesesBeneficio < 2 || mesesBeneficio > 12) {
+				System.out.println("Diga a quantidade de meses válida: ");
+			mesesBeneficio = entrada.nextInt();
+			}
+			System.out.println("Aposentado? --- Sim ou Não--- ");
+			aposentado = entrada.next();
+		//REGRA LETRA E
+		case "Sim" :
+			System.out.println("Você terá o benefício de 6 meses. ");
+			valorTotalConcedido = valorTotalConcedido + (valorBeneficio * mesesBeneficio);
+			break;
+		case "Não" :
+			System.out.println("Você não terá o benefício");
+			break;
+							
+		 case "EMPREGADOR": 
+			System.out.println("Quantos funcionários? ");
+			funcionarios = entrada.nextInt();
+			valorBeneficio = funcionarios * 200;
+			System.out.println("O benefício será de " + valorBeneficio);
+	//REGRA LETRA F	
+			if(funcionarios <= 20)
+				novoValor = valorBeneficio * 15 / 100;
+			System.out.println("O valor do benefício será de: " + novoValor +
+					" devido a quantidade de funcionários. ");
+			etapas = etapas + "Para empregadores "
+					+ "que tenham até 20 funcionários haverá um "
+					+ "acréscimo de 15% sobre o valor total. ";
+	// REGRA LETRA J
+				if(anoNasc  > 2002) {
+			System.out.println("Você não tem direito a este benefício por "
+					+ "ter nascido no ano de " + anoNasc + " e não ter completado 20 anos.");
+			etapas = etapas + "O benefício só será concedido para maiores de 20 anos";
+				}
+				valorTotalConcedido = valorTotalConcedido + (valorBeneficio * mesesBeneficio);
+			break;
+	        case "DESEMPREGADO": 
+	        	System.out.println("Qual o valor do benefício?"
+	        			+ " (Desempregados receberão entre R$1500,00 e R$2300,00) ");
+	        	valorBeneficio = entrada.nextDouble();
+	        	while(valorBeneficio < 1500 || valorBeneficio > 2300) {
+					System.out.println("Diga um valor válido ");
+					valorBeneficio = entrada.nextDouble();
+				}        	
+	        	System.out.println("Quantos meses de benefício? (máximo 12 meses e mínimo 2 meses) ");
+				mesesBeneficio = entrada.nextInt();
+				while(mesesBeneficio < 2 || mesesBeneficio > 12) {
+					System.out.println("Diga a quantidade de meses válida: ");
+				mesesBeneficio = entrada.nextInt();
+				}
+			System.out.println("Há quantos meses está desempregado? ");
+			mesesDesempregado = entrada.nextInt();
+			// REGRA LETRA H 
+			if(mesesDesempregado < 6) {
+				novoValor = valorBeneficio * 10/100;
+				System.out.println("A redução do benefício será de: " + novoValor + " Reais");
+				etapas = etapas + "Se estiver desempregado "
+						+ "há menos de 6 meses terá uma redução de 10%. ";
+				valorTotalConcedido = valorTotalConcedido + (valorBeneficio * mesesBeneficio);
+			}
+			
+		}
+		System.out.println("Qual estado? ");
+	    estado = entrada.next();
+		// REGRA LETRA P
+		switch(estado.toUpperCase()) {
+		case "AM" : 
+			novoValor = valorBeneficio * 11 / 100;
+			System.out.println("O benefício para esse Estado "
+					+ "sofrerá um acréscimo de " + novoValor + " Reais.");
+			etapas = etapas + "O benefício de pessoas que "
+					+ "moram em Amazonas terá acréscimo de 11%. ";
+			break;
+	// REGRA LETRA S
+		case "PE" : 
+			novoValor = valorBeneficio * 14 / 100;
+			System.out.println("O benefício para esse Estado "
+					+ "sofrerá um acréscimo de " + novoValor + " Reais.");
+			etapas = etapas + " O benefício de pessoas que moram "
+					+ "em Pernambuco terá acréscimo de 14%. ";			
+			break;
+		}		
+		
+		System.out.println("O(a) " + nome + " com nascimento no "
+				+ "ano de " + anoNasc + " inseriu a categoria de " + categoria + " e as "
+						+ "seguintes regras foram atendidas ");
+		System.out.println(etapas);
+		
+		System.out.println("Deseja informar um novo beneficiário? ");
+		novoBeneficiario2 = entrada.next();
+		if(valorBeneficio > beneMaior) {
+			segundoBeneMaior = beneMaior;
+			nomeSegundoMaior = nomeMaior;
+			beneMaior = valorBeneficio;
+			nomeMaior = nome;
+		} else if(valorBeneficio > segundoBeneMaior)
+			segundoBeneMaior = valorBeneficio;
+		nomeSegundoMaior = nome;
+		
+		if(mesesBeneficio > mesMaior) {
+			nomeSegundoMaior = nomeMaior;
+			mesSegundoMaior = mesMaior;
+			mesMaior = mesesBeneficio;
+			nomeMaior = nome;
+		} else if(mesesBeneficio > mesSegundoMaior)
+			mesSegundoMaior = mesesBeneficio;
+		    nomeSegundoMaior = nome;
+		    
+		contador1 ++; contador2 ++;
+
+        } while(novoBeneficiario2.equals("sim"));    
+          System.out.println("------Fim do programa-------");
+          
+          System.out.println("Total de usuários lidos: " + contador1 + ".");
+          System.out.println("Total de beneficiários: " + contador2 + ".");
+          System.out.println("Total de valor que será concedido " + valorTotalConcedido);
+          System.out.println("O nome do 1º beneficiário é " 
+          + nomeMaior + " e o valor é R$" + beneMaior);
+          System.out.println("O nome do 2º maior beneficiário é " 
+          + nomeSegundoMaior + " e o valor é R$ " + segundoBeneMaior);      
+          System.out.println("O nome dos 2 beneficiários que "
+          		+ "irão receber os benefícios por mais tempo. \n" + nomeMaior + "\n " + 
+        		  nomeSegundoMaior);     
+		}
+}
+
+
+
+
+
+	
+				
+				
+
