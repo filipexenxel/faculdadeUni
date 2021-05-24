@@ -1,0 +1,100 @@
+package pacote1;
+
+import java.util.Scanner;
+
+public class AtividadeEntregaFila {
+		
+	public static String[][] adicionarPaciente(String[][] paciente, String idade, String nome, String desc) {
+		int i;
+		for (i = 0; i < paciente.length; i++) {
+			if (paciente[i][0] == null) {
+				paciente[i][0] = nome;
+				paciente[i][1] = idade;
+				paciente[i][2] = desc;
+				return paciente;
+			}
+		}
+		System.out.println("Há 20 pessoas na fila");
+		return paciente;
+	}
+	
+	public static String[][] removerPaciente(String[][] paciente, int in) {
+		String[][] recarregar = new String[paciente.length][3];
+		int contador = 0;
+		int i;
+
+		for (i = 0; i < paciente.length; i++) {
+			if (i == in) {
+				contador++;
+				continue;
+			}
+			recarregar[i - contador] = paciente[i];
+		}
+		System.out.println("Paciente " + (in + 1) + " foi atendido com exito!");
+		return recarregar;
+
+	}
+	
+	public static void main(String[] args) {
+
+		Scanner entrada = new Scanner(System.in);
+
+		int i;
+		String paciente[][];
+		paciente = new String[20][3];
+
+		String nome;
+		String idade;
+		String desc;
+		int opcao;
+		char escolher = 'N';
+		int in;
+
+		do {			
+			System.out.println("Digite 1 para incluir paciente\n" + 
+		"Digite 2 para atender paciente\n" +
+					"Digite 3 para sair");
+			opcao = entrada.nextInt();	
+			
+				if (opcao == 3) {
+					escolher = 'P';
+					break;
+				}
+			switch (opcao) {
+
+			case 1: {
+				System.out.println("Digite o nome do paciente: ");
+				nome = entrada.next();
+				System.out.println("Digite a idade do paciente: ");
+				idade = entrada.next();		
+				System.out.println("Digite a descrição do atendimento: ");
+				desc = entrada.next();
+				paciente = adicionarPaciente(paciente, idade, nome, desc);
+				break;
+			}
+
+			case 2: {
+				System.out.println("Qual será o próximo paciente atendido?");
+				in = entrada.nextInt() - 1;
+				paciente = removerPaciente(paciente, in);
+				for (i = 0; i < paciente.length; i++) {
+					if (paciente[i][0] == null) {
+
+					}
+
+					System.out.println(
+							"Paciente: " + (i + 1) + " | Nome: " + paciente[i][0] + " | Idade: " + paciente[i][1]);
+
+				}
+
+				break;
+			}
+
+			}
+
+		}
+
+		while (escolher == 'F');
+
+	}
+	}
